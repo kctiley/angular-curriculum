@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html  ng-app >
+<head>
+  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js'></script>
+  <title>{{ greeting }} World</title>
+</head>
+<body>
+  <p>{{1 + 6 | currency:"&euro;"}}<p>
+  <p>{{1 + 10 | currency}}<p>
+  <input ng-model="upAndLowCase">
+  <p>{{upAndLowCase | uppercase}}
+  <p>{{upAndLowCase | lowercase}}
+    <h1>My name is: {{name}}</h1>
+  <select ng-model="roundPoint">
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+    <option value='3'>3</option>
+    <option value='4'>4</option>
+    <option value='5'>5</option>
+    <option value='6'>6</option>
+    <option value='7'>7</option>
+  </select>
+  <p>{{3.14159265359 | number: roundPoint }}</p>
+  <ng-pluralize count="roundPoint"
+    when = "{ '0': 'Nobody is viewing.',
+                     'one': '1 digit.',
+                     'other': '{} digits.'}">
+  </ng-pluralize>
+  <h2> Tip Calculator </h2>
+  <p>
+    How much did your meal cost?
+    <input ng-model="mealCost">
+  </p>
+  <p>
+    How do you want to tip?
+    <select ng-model="roundPoint">
+      <option value='0.05'>5%</option>
+      <option value='0.10'>10%</option>
+      <option value='0.15'>15%</option>
+      <option value='0.20'>20%</option>
+      <option value='0.25'>25%</option>
+    </select>
+  </p>
+  <p>
+    Meal Only: {{mealCost | currency}}
+  </p>
+  <p>
+    Tip: {{mealCost * roundPoint | currency}}
+  </p>
+  <h1> Mad Lib </h1>
+  <p> Boy's name
+      <input ng-model='name' type=text>
+  <p> Adjective
+      <input ng-model='adj' type=text>
+  <p> Plural noun
+      <input ng-model='plurNoun1' type=text>
+  <p> Insect plural
+      <input ng-model='plurInsect' type=text>
+  <p> Second Plural Noun
+      <input ng-model='plurNoun2' type=text>
+  <p> Verb ending in 's'
+      <input ng-model='verbS' type=text>
+  <h3>Your mad lib story</h3>
+  <p>{{name}} {{verbS}}. {{adj}} {{plurInsect}} and {{plurNoun}} {{verbS}}. 
+
+  </p>
+ 
+</html>
