@@ -22,16 +22,19 @@
           {{symbol}}
         </li>
       </ul>
+
       <h2> Handling an array with duplicates: </h2>
       <ul>
         <li ng-repeat="each in dupesArr track by $index">
           {{each}}
         </li>
       </ul>
+
       <h1>Objects</h1>
       <div >
         <strong>Name: {{ objDog.name }}</strong> Barks:{{ objDog.barks }}
       </div>
+
       <h1>Show/Hide</h1>
       <p ng-show="1 === 1">
         This should show since show is evaluating 1===1
@@ -39,6 +42,7 @@
       <p ng-hide="1 === 2">
         Hide is set to evaluate as false with 1===2, so this should now show
       </p>
+
       <h1>Password Validator</h1>
       <p>Password must be at least six characters for submit button to appear
       </p>
@@ -52,11 +56,30 @@
         Password needs to be at least six characters
       </p>
       <p>Password Length: {{password.length}}</p>
+      <h1 class='highlight'> NG-Class </h1>
+      <div ng-class="{highlight: 4 + 4 == 8}"> 4 + 4 = 8</div>
+      <div ng-class="{highlight: 4 + 4 == 10}">4 + 4 = 10</div>
+
+      <h1>Password Validator PART 2</h1>
+      <p>Password must be at least six characters for submit button to appear
+      </p>
+      <p>
+        <input ng-model='password' ng-attr-class="{{password.length >= 6 && 'validStyle' || 'invalidStyle' }}" type=text>
+      </p>
+      <p ng-show="password.length >= 6">
+        <button> Submit </button>
+      </p>
+      <p ng-show="password.length < 6", style="color: red">
+        Password needs to be at least six characters
+      </p>
+      <p ng-attr-class="{{password.length >= 6 && 'validStyle' || 'invalidStyle' }}" >Password Length: {{password.length}}</p>
+
 
        
     </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
-    <script src="main.js" type="text/javascript"></script>
+    <script src="main.js" "css.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script>
     angular.module("myapp", [])
       .controller("NamesController", function($scope) {
@@ -64,7 +87,6 @@
         $scope.symbols = ["&spades;", "&clubs;", "&hearts;", "&diams;"];
         $scope.dupesArr = [1,2,2,5,6,9,9,9],
         $scope.objDog = {name: "Fido", tail: true, barks: 'Woof!'};
-        // $scope.passwordLength = $scope.password.split('').length;
       });
 
     </script>
