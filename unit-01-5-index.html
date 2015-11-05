@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+  <head>
+    <meta charset="utf-8">
+    <title>unit01-5</title>
+  </head>
+  <body>
+    <div ng-controller="NamesController" >
+      <ul>
+        <li ng-repeat="name in names">
+          {{name}}
+        </li>
+      </ul>
+      <ul ng-repeat="name in names">
+        <li>{{name}}</li>
+      </ul>
+    </div>
+    <div ng-controller="NamesController">
+      <h2> Suits </h2>
+      <ul>
+        <li ng-repeat="symbol in symbols">
+          {{symbol}}
+        </li>
+      </ul>
+      <h2> Handling an array with duplicates: </h2>
+      <ul>
+        <li ng-repeat="each in dupesArr track by $index">
+          {{each}}
+        </li>
+      </ul>
+      <h1>Objects</h1>
+      <div >
+        <strong>Name: {{ objDog.name }}</strong> Barks:{{ objDog.barks }}
+      </div>
+      <h1>Show/Hide</h1>
+      <p ng-show="1 === 1">
+        This should show since show is evaluating 1===1
+      </p>
+      <p ng-hide="1 === 2">
+        Hide is set to evaluate as false with 1===2, so this should now show
+      </p>
+      <h1>Password Validator</h1>
+      <p>Password must be at least six characters for submit button to appear
+      </p>
+      <p>
+        <input ng-model='password' type=text>
+      </p>
+      <p ng-show="password.length >= 6">
+        <button> Submit </button>
+      </p>
+      <p ng-show="password.length < 6", style="color: red">
+        Password needs to be at least six characters
+      </p>
+      <p>Password Length: {{password.length}}</p>
+
+       
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+    <script src="main.js" type="text/javascript"></script>
+    <script>
+    angular.module("myapp", [])
+      .controller("NamesController", function($scope) {
+        $scope.names = ["Harry", "Ron", "Hermione", "Sirius", "Hedwig", "Tonks"];
+        $scope.symbols = ["&spades;", "&clubs;", "&hearts;", "&diams;"];
+        $scope.dupesArr = [1,2,2,5,6,9,9,9],
+        $scope.objDog = {name: "Fido", tail: true, barks: 'Woof!'};
+        // $scope.passwordLength = $scope.password.split('').length;
+      });
+
+    </script>
+  </body>
+</html>
